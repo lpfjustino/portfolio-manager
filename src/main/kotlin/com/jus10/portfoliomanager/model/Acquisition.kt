@@ -22,11 +22,13 @@ data class Acquisition(
         quantity: Int,
         acquisitionDate: LocalDate,
         sellDate: LocalDate?,
-    ) : this(UUID.randomUUID(),
+    ) : this(
+        UUID.randomUUID(),
         userId,
         assetId,
         price,
         quantity,
         acquisitionDate,
-        sellDate)
+        sellDate
+    )
 }
