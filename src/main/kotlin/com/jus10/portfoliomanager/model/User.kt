@@ -5,13 +5,15 @@ import org.springframework.data.annotation.Id
 import java.util.*
 
 data class User(
-    @Id val id: UUID?,
+    @Id val id: UUID,
     val username: String,
 ) {
+    constructor(username: String) : this(UUID.randomUUID(), username)
+
     lateinit var acquisitions: List<Acquisition>
 
     fun getAssets(): List<Asset> {
-        return emptyList();
+        return emptyList()
     }
 }
 

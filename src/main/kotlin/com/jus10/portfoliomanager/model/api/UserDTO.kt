@@ -6,7 +6,4 @@ data class UserDTO(
     val username: String,
 )
 
-fun UserDTO.toUser() = User(
-    id = null,
-    username = username,
-)
+fun UserDTO.toUser() = User(username)
