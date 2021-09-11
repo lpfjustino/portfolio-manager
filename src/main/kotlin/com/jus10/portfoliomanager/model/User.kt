@@ -9,12 +9,6 @@ data class User(
     val username: String,
 ) {
     constructor(username: String) : this(UUID.randomUUID(), username)
-
-    lateinit var acquisitions: List<Acquisition>
-
-    fun getAssets(): List<Asset> {
-        return emptyList()
-    }
 }
 
 fun User.toUserDTO() = UserDTO(
