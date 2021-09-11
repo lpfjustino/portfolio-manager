@@ -11,4 +11,4 @@ data class AcquisitionDTO(
 )
 
 fun AcquisitionDTO.toAcquisition(price: Double, acquisitionDate: LocalDate, sellDate: LocalDate?) =
-    Acquisition(null, userId, assetId, price, quantity, acquisitionDate, sellDate)
+    Acquisition(userId, assetId, price, quantity, acquisitionDate, sellDate)
