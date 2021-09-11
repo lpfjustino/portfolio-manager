@@ -7,8 +7,4 @@ data class AssetDTO(
     val price: Double,
 )
 
-fun AssetDTO.toAsset() = Asset(
-    id = null,
-    ticker = ticker,
-    price = price,
-)
+fun AssetDTO.toAsset() = Asset(ticker, price)
