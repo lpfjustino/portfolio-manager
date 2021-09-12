@@ -2,6 +2,7 @@ package com.jus10.portfoliomanager.controller
 
 import com.jus10.portfoliomanager.model.api.AssetCreationDTO
 import com.jus10.portfoliomanager.service.AssetService
+import com.jus10.portfoliomanager.exception.DBException
 import org.springframework.web.bind.annotation.*
 
 @RestController
