@@ -15,7 +15,7 @@ class PerformanceService(
     fun getPerformance(userId: UUID): Map<String, Double> {
         val assets: Map<UUID, Asset> = assetRepository.findAll()
             .associateBy { it.id as UUID }
-        return acquisitionRepository.findByUserId(userId)
+        return acquisitionRepository.findByUserIdAndSellDate(userId, null)
             .groupingBy { it.assetId }
             .fold(listOf<Double>()) { acc, acquisition -> acc + getProfit(acquisition, assets) }
             .mapValues { it.value.reduce { acc, profit -> acc + profit } }
