@@ -4,25 +4,21 @@ import com.jus10.portfoliomanager.model.Acquisition
 import com.jus10.portfoliomanager.model.Asset
 import com.jus10.portfoliomanager.repository.AcquisitionRepository
 import com.jus10.portfoliomanager.repository.AssetRepository
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class PerformanceService {
-
-    @Autowired
-    lateinit var acquisitionRepository: AcquisitionRepository
-    @Autowired
-    lateinit var assetRepository: AssetRepository
-
+class PerformanceService(
+    val acquisitionRepository: AcquisitionRepository,
+    val assetRepository: AssetRepository,
+) {
     fun getPerformance(userId: UUID): Map<String, Double> {
         val assets: Map<UUID, Asset> = assetRepository.findAll()
-            .associateBy { it.id }
+            .associateBy { it.id as UUID }
         return acquisitionRepository.findByUserId(userId)
             .groupingBy { it.assetId }
             .fold(listOf<Double>()) { acc, acquisition -> acc + getProfit(acquisition, assets) }
-            .mapValues { it.value.reduce{ acc, profit -> acc + profit } }
+            .mapValues { it.value.reduce { acc, profit -> acc + profit } }
             .mapKeysTo(mutableMapOf()) { assets[it.key]!!.ticker }
     }
 
