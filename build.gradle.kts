@@ -21,7 +21,7 @@ dependencies {
 
 	// db: hibernate, flyway, postgres
 	implementation("org.springframework.boot:spring-boot-starter-jdbc:2.5.4")
-	implementation("org.springframework.data:spring-data-jdbc")
+	implementation("org.springframework.data:spring-data-jdbc:2.2.4")
 	runtimeOnly("org.postgresql:postgresql:42.2.23.jre7")
 
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
