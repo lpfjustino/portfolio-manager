@@ -11,4 +11,4 @@ data class User(
     constructor(username: String) : this(UUID.randomUUID(), username)
 }
 
-fun User.toUserDTO() = UserDTO(username)
+fun User.toUserDTO(id: UUID) = UserDTO(id, username)

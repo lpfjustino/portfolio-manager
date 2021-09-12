@@ -1,6 +1,7 @@
 package com.jus10.portfoliomanager.controller
 
-import com.jus10.portfoliomanager.model.api.AssetDTO
+import com.jus10.portfoliomanager.model.api.AssetCreationDTO
+import com.jus10.portfoliomanager.model.api.toAsset
 import com.jus10.portfoliomanager.service.AssetService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -16,5 +17,5 @@ class AssetController {
     fun findAll() = assetService.findAll()
 
     @PostMapping
-    fun create(@RequestBody asset: AssetDTO) = assetService.save(asset)
+    fun create(@RequestBody asset: AssetCreationDTO) = assetService.save(asset)
 }

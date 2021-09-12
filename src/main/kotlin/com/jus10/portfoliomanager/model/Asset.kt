@@ -5,11 +5,11 @@ import org.springframework.data.annotation.Id
 import java.util.*
 
 data class Asset(
-    @Id val id: UUID,
+    @Id val id: UUID?,
     val ticker: String,
     val price: Double,
 ) {
-    constructor(ticker: String, price: Double) : this(UUID.randomUUID(), ticker, price)
+    constructor(ticker: String, price: Double) : this(null, ticker, price)
 }
 
-fun Asset.toAssetDTO() = AssetDTO(ticker, price)
+fun Asset.toAssetDTO(id: UUID) = AssetDTO(id, ticker, price)

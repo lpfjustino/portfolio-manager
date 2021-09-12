@@ -12,7 +12,7 @@ class UserService {
     @Autowired
     lateinit var userRepository: UserRepository
 
-    fun findAll(): List<UserDTO> = userRepository.findAll().map { it.toUserDTO() }
+    fun findAll(): List<UserDTO> = userRepository.findAll().map { it.toUserDTO(it.id) }
 
     fun save(user: UserDTO) {
         userRepository.save(user.toUser())
