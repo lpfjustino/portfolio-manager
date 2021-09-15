@@ -3,11 +3,11 @@ import com.jus10.portfoliomanager.model.Acquisition
 import com.jus10.portfoliomanager.model.Asset
 import com.jus10.portfoliomanager.repository.AcquisitionRepository
 import com.jus10.portfoliomanager.repository.AssetRepository
+import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import java.time.LocalDate
 import java.util.*
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class PerformanceServiceTest {
@@ -24,8 +24,7 @@ class PerformanceServiceTest {
         Mockito.`when`(assetRepository.findAll()).thenReturn(listOf(
             asset1,
         ))
-        Mockito.`when`(acquisitionRepository.findByUserIdAndSellDate(userId, null)).thenReturn(listOf(
-        ))
+        Mockito.`when`(acquisitionRepository.findByUserIdAndSellDate(userId, null)).thenReturn(listOf())
 
         val performance = performanceService.getPerformance(userId)
 
